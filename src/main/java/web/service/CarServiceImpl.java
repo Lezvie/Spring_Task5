@@ -25,9 +25,4 @@ public class CarServiceImpl implements CarService {
                 .limit(count)
                 .collect(Collectors.toList());
     }
-
-    @Override
-    public List<Car> getAllCars() {
-        return listCars;
-    }
 }
