@@ -20,9 +20,17 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> getListByCars(int count) {
-        return listCars.stream()
-                .limit(count)
-                .collect(Collectors.toList());
-    }
+    public List<Car> getListByCars(String x) {
+        Integer integer = null;
+        try {
+            integer = Integer.valueOf(x);
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Символ не является числом");
+        }
+        if (integer < 0)
+            throw new IllegalArgumentException("Число машин не может быть меньше 0");
+            return listCars.stream()
+                    .limit(integer)
+                    .collect(Collectors.toList());
+        }
 }
